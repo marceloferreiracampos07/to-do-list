@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas</title>
+    
+<body>
+
+    <header>
+        <h1>Minhas tarefas - Tarefas</h1>
+        <a href="/tasks/add" style="padding: 10px; background: blue; color: white; text-decoration: none;">Nova Tarefa</a>
+    </header>
+
+    <main>
+        <h2>Tarefas Pendentes</h2>
+        <ul id="task-list">
+            </ul>
+    </main>
+
+    <script>
+       async function carregarTarefas() {
+    const list = document.getElementById('task-list');
+    
+    list.innerHTML = '';
+
+    try {
+        const response = await fetch('/tasks/all-data');
+        const tasks = await response.json();
+
+        tasks.forEach(task => {
+            const li = document.createElement('li');
+            li.style.listStyle = 'none'; 
+
+            li.innerHTML = `
+                <div style="background: white; margin-bottom: 15px; padding: 20px; border-radius: 10px; shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #007bff;">
+                    <span style="font-family: sans-serif; font-size: 1.1rem;">${task.title} - </span> 
+                    <strong style="font-family: sans-serif;">${task.description}</strong>
+                    
+                    <div class="actions" style="margin-top: 15px; display: flex; align-items: center; gap: 10px;">
+                        
+                        <a href="/tasks/edit/${task.id}" 
+                           style="display: inline-block; padding: 8px 15px; background-color: #f1c40f; color: black; text-decoration: none; border-radius: 5px; font-family: sans-serif; font-size: 14px; font-weight: bold;">
+                           Editar
+                        </a>
+                        
+                        <form action="/tasks/remove" method="POST" style="margin: 0; display: inline;">
+                            <input type="hidden" name="id" value="${task.id}">
+                            <button type="submit" 
+                                style="cursor: pointer; padding: 8px 15px; background-color: #dc3545; color: white; border: none; border-radius: 5px; font-family: sans-serif; font-size: 14px; font-weight: bold;">
+                                Excluir
+                            </button>
+                        </form>
+
+                        <form action="/tasks/concluir" method="POST" style="margin: 0; display: inline;">
+                            <input type="hidden" name="id" value="${task.id}">
+                            <button type="submit" 
+                                style="cursor: pointer; padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; font-family: sans-serif; font-size: 14px; font-weight: bold;">
+                                Concluir
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            list.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar tarefas:", error);
+    }
+}
+
+// Inicializa a função
+carregarTarefas(); 
+    </script>
+</body>
+</html>

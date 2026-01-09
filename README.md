@@ -32,11 +32,9 @@ Exclusão Segura: Remoção de registros do banco de dados.
 Variáveis de Ambiente: O projeto utiliza um arquivo .env para esconder a senha do seu banco de dados (Jr2007) e outras configurações sensíveis.
 
 Gitignore: O arquivo .env está configurado no seu .gitignore, garantindo que suas senhas não sejam enviadas para o GitHub público.
+<img width="1358" height="649" alt="tela de adicionar tarefa" src="https://github.com/user-attachments/assets/d9f7b2ce-b836-439f-9584-b53f281459f3" />
 
-<img width="1366" height="768" alt="Captura de Tela (818)" src="https://github.com/user-attachments/assets/9c80340d-0a39-4709-aced-dea720c37bba" />
+<img width="1355" height="629" alt="tela que amostra as tarefas" src="https://github.com/user-attachments/assets/b1de6f53-caba-46a6-bf22-62e1962a65e6" />
 
-<img width="1366" height="768" alt="Captura de Tela (819)<img width="1366" height="768" alt="Captura de Tela (820)" src="https://github.com/user-attachments/assets/382cdf85-f4ca-4cd4-9b38-da7d2bb6f582" />
-
-<img width="1366" height="768" alt="Captura de Tela (820)" src="https://github.com/user-attachments/assets/9dc7b277-0dfd-440b-a3a6-fb3ac939dea3" />
-
+<img width="1366" height="637" alt="tela que mostra as tarefas concluidas" src="https://github.com/user-attachments/assets/657117dc-efd4-412d-b48f-d793b3aa0da5" />
 

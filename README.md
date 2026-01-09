@@ -36,4 +36,7 @@ Gitignore: O arquivo .env está configurado no seu .gitignore, garantindo que su
 <img width="1366" height="768" alt="Captura de Tela (818)" src="https://github.com/user-attachments/assets/9c80340d-0a39-4709-aced-dea720c37bba" />
 
 <img width="1366" height="768" alt="Captura de Tela (819)<img width="1366" height="768" alt="Captura de Tela (820)" src="https://github.com/user-attachments/assets/382cdf85-f4ca-4cd4-9b38-da7d2bb6f582" />
-" src="https://github.com/user-attachments/assets/9f8070ec-0bd6-4a8b-806a-b09a93958d89" />
+
+<img width="1366" height="768" alt="Captura de Tela (820)" src="https://github.com/user-attachments/assets/9dc7b277-0dfd-440b-a3a6-fb3ac939dea3" />
+
+

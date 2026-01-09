@@ -4,6 +4,10 @@ const conn = require("./db/conn.js")
 const Task = require('./models/task.js')
 const tasksRoutes = require('./routes/taskrouter.js') 
 require('dotenv').config();
+
+// Configuração da porta dinâmica para hospedagem
+const PORT = process.env.PORT || 3000;
+
 app.use(
     express.urlencoded({
         extended: true
@@ -11,13 +15,14 @@ app.use(
 )
 app.use(express.static('public'))
 app.use(express.json())
+
 app.use('/tasks', tasksRoutes)
 
 
 conn.sync()
     .then(() => {
-        app.listen(3000, () => {
-            console.log("Servidor rodando ")
+        app.listen(PORT, () => {
+            console.log(`Servidor rodando na porta ${PORT}`)
         })
     })
     .catch((err) => console.log(err))

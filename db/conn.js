@@ -7,15 +7,26 @@ const sequelize = new Sequelize(
     process.env.DB_PASS,
     {
         host: process.env.DB_HOST,
-        dialect: 'mysql'
+        port: process.env.DB_PORT, 
+        dialect: 'mysql',
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false 
+            }
+        }
     }
 );
 
-try {
-    sequelize.authenticate();
-    console.log('Conectamos ao seu MySQL com sucesso!');
-} catch (error) {
-    console.log('Não foi possível conectar ao banco de dados:', error);
-}
+
+const connectDB = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Conectamos ao seu MySQL com sucesso!');
+    } catch (error) {
+        console.error('Erro de conexão:', error);
+    }
+};
+
+connectDB();
 
 module.exports = sequelize;

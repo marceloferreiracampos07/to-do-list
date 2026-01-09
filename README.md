@@ -38,3 +38,53 @@ Gitignore: O arquivo .env está configurado no seu .gitignore, garantindo que su
 
 <img width="1366" height="637" alt="tela que mostra as tarefas concluidas" src="https://github.com/user-attachments/assets/657117dc-efd4-412d-b48f-d793b3aa0da5" />
 
+
+⚙️ Como rodar o projeto no VS Code
+Siga este passo a passo para configurar o ambiente de desenvolvimento:
+
+1. Clonar e Instalar
+No terminal do seu VS Code, execute os comandos:
+
+# Clone o repositório
+git clone https://github.com/marceloferreiracampos07/to-do-list.git
+
+# Entre na pasta e instale as dependências
+cd to-do-list
+npm install
+
+2. Configurar Variáveis de Ambiente
+Por questões de segurança, o arquivo .env não é enviado para o GitHub. Você precisará:
+
+Criar um arquivo chamado .env na raiz do projeto.
+
+Configurar suas credenciais do banco de dados local seguindo este modelo:
+
+Snippet de código
+
+DB_NAME=nodemvc2
+DB_USER=root
+DB_PASS=SUA_SENHA_AQUI
+DB_HOST=localhost
+PORT=3000
+3. Preparar o Banco de Dados
+Certifique-se de que o MySQL está rodando.
+
+Crie o banco de dados chamado nodemvc2 através do seu terminal MySQL ou Workbench.
+
+4. Executar a Aplicação
+Com tudo configurado, inicie o servidor com:
+
+Bash
+
+node index.js
+Acesse no seu navegador: http://localhost:3000
+
+
+🗄️ Configuração do Banco de Dados (MySQL)
+Se você encontrar um erro de autenticação ao tentar conectar o Node.js ao MySQL, pode ser necessário alterar o método de criptografia da senha do seu usuário root. Execute o seguinte comando no seu terminal MySQL ou Workbench:
+
+SQL
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SUA_SENHA_AQUI';
+FLUSH PRIVILEGES;
+Nota: Substitua SUA_SENHA_AQUI pela mesma senha que você definiu no arquivo .env.

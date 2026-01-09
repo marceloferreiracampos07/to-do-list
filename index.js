@@ -3,7 +3,7 @@ const app = express()
 const conn = require("./db/conn.js")
 const Task = require('./models/task.js')
 const tasksRoutes = require('./routes/taskrouter.js') 
-require('dotenv').config();
+
 
 
 const PORT = process.env.PORT || 3000;

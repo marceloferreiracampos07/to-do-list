@@ -4,10 +4,10 @@ const conn = require("./db/conn.js")
 const Task = require('./models/task.js')
 const tasksRoutes = require('./routes/taskrouter.js') 
 
-
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,8 +19,8 @@ app.use(
 app.use(express.static('public'))
 app.use(express.json())
 
-app.use('/tasks', tasksRoutes)
 
+app.use('/tasks', tasksRoutes)
 
 
 conn.sync()

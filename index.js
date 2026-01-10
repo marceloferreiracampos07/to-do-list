@@ -17,12 +17,8 @@ app.use(express.json())
 app.use('/tasks', tasksRoutes)
 
 
-conn.sync()
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`)
-        })
-    })
-    .catch((err) => {
-        console.log('Erro ao sincronizar banco:', err)
-    })
+conn.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
+    });
+}).catch((err) => console.log(err));

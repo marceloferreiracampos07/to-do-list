@@ -12,17 +12,18 @@
   "author": "",
   "license": "ISC",
   "engines": {
-  "node": "20.x"
-},
+    "node": "20.x"
+  },
   "type": "commonjs",
   "dependencies": {
     "@smithy/hash-node": "^4.2.7",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mysql2": "3.16.0",
-    "nodemon": "^3.1.11",
     "path": "^0.12.7",
     "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
-// Forçando deploy

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/tasks', tasksRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Servidor legado em execução...');
+    res.redirect('/tasks')
 });
 
 

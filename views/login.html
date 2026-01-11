@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina de  login</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+header h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+
+main {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px; /* Mantendo o tamanho reduzido solicitado */
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #5a6fd6;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.signup-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline; 
+}
+</style>
+<body>
+    <header> 
+        <h1>PAGINA DE LOGIN</h1>
+    </header>
+
+    <main>
+        <form action="/login" method="POST" id="formlogin">
+            <div>
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="digite seu email " id="email" required>
+            </div>
+
+            <div>
+                <label>Senha:</label>
+                <input type="password" name="password" placeholder="digite Sua senha" id="password" required>
+            </div>
+
+            <button type="submit">Entrar</button>
+
+            <div class="signup-link">
+                Ainda não tem conta? <a href="/register">Cadastre-se</a>
+            </div>
+        </form>
+    </main>
+    <script>
+        const form = document.querySelector('#formLogin');
+
+form.addEventListener('submit', function(event) {
+    const email = document.querySelector('#email').value;
+    const senha = document.querySelector('#password').value;
+
+    if (email.indexOf('@') === -1) {
+        event.preventDefault();
+        alert('Por favor, insira um e-mail válido.');
+        return;
+    }
+
+    if (senha.length < 1) {
+        event.preventDefault();
+        alert('Por favor, insira sua senha.');
+        return;
+    }
+
+    console.log('Autenticando...');
+});
+    </script>
+</body>
+</html>

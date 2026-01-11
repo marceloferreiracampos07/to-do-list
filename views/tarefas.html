@@ -4,8 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Tarefas</title>
-    
+
+ <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo { 
+    color: white; 
+    font-weight: 600; 
+    font-size: 1.4rem; 
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 20px; 
+}
+
+.nav-links a { 
+    color: white; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+}
+
+header {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 { 
+    font-size: 1.8rem; 
+}
+
+.btn-nova-tarefa {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-nova-tarefa:hover { 
+    transform: translateY(-2px); 
+    background: #218838; 
+}
+
+main {
+    width: 90%;
+    max-width: 1000px;
+}
+
+h2 { 
+    color: white; 
+    margin-bottom: 20px; 
+    font-weight: 400; 
+    opacity: 0.9; 
+}
+
+#task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
+}
+
+.task-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+
+.task-card:hover { 
+    transform: scale(1.02); 
+}
+
+.task-card h3 { 
+    color: #333; 
+    margin-bottom: 10px; 
+    font-size: 1.2rem; 
+}
+
+.task-card p { 
+    color: #666; 
+    font-size: 0.9rem; 
+    margin-bottom: 20px; 
+    line-height: 1.5; 
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.done { background: #667eea; color: white; }
+.edit { background: #f0ad4e; color: white; }
+.delete { background: #ff4b5c; color: white; }
+
+.btn-action:hover { 
+    opacity: 0.8; 
+}
+ </style>   
 <body>
+    <nav class="navbar">
+        <div class="logo">MinhasTarefas</div>
+        <ul class="nav-links">
+            <li><a href="/tasks">Ver Tarefas pedentes</a></li>
+            <li><a href="/tasks/concluidas-page">Tarefas Concluídas</a></li>
+            <li><a href="/logout" class="logout-btn">Sair</a></li>
+        </ul>
+    </nav>
+
 
     <header>
         <h1>Minhas tarefas - Tarefas</h1>

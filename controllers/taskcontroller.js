@@ -1,5 +1,6 @@
 const Task = require("../models/task.js")
 const path = require("path")
+const user = require("../models/user.js")
 
 module.exports = class taskcontroller {
     
@@ -11,7 +12,8 @@ module.exports = class taskcontroller {
         const task = {
             title: req.body.title,
             description: req.body.description,
-            done: false
+            done: false,
+            Userid:req.session.userid
         }
         try {
             await Task.create(task)
@@ -27,8 +29,9 @@ module.exports = class taskcontroller {
 
     static async showAllData(req, res) {
         try {
-            const tasks = await Task.findAll({ raw: true })
-            res.json(tasks)
+            const userId = req.session.userid
+            const task = await Task.findAll({where:{UserId:userId},raw:true,include:user})
+            res.json(task)
         } catch (err) {
             console.log(err)
         }
@@ -36,8 +39,9 @@ module.exports = class taskcontroller {
 
     static async excluirtarefa(req, res) {
         const id = req.body.id
+        const userid = req.session.userid
         try {
-            await Task.destroy({ where: { id: id } })
+            await Task.destroy({ where: { id: id,UserId:userid } })
             res.redirect('/tasks')
         } catch (err) {
             console.log(err)
@@ -60,12 +64,13 @@ module.exports = class taskcontroller {
 
     static async atualizartarefaupdate(req, res) {
         const id = req.body.id
+        const userid = req.session.userid
         const taskdata = {
             title: req.body.title,
             description: req.body.description
         }
         try {
-            await Task.update(taskdata, { where: { id: id } })
+            await Task.update(taskdata, { where: { id: id, UserId:userid } })
             res.redirect('/tasks')
         } catch (error) {
             res.status(500).send("Erro ao atualizar")
@@ -73,10 +78,11 @@ module.exports = class taskcontroller {
     }
    static async tarefaconcluida(req, res) {
     const id = req.body.id;
+    const userid = req.session.userid
     const taskdata = { done: true };
 
     try {
-        await Task.update(taskdata, { where: { id: id } });
+        await Task.update(taskdata, { where: { id: id,UserId:userid } });
         res.redirect('/tasks/concluidas-page'); 
     } catch (error) {
         console.log("Erro ao atualizar status:", error);

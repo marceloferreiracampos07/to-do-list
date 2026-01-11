@@ -13,7 +13,7 @@ module.exports = class taskcontroller {
             title: req.body.title,
             description: req.body.description,
             done: false,
-            Userid:req.session.userid
+            UserId: req.session.userid 
         }
         try {
             await Task.create(task)
@@ -30,7 +30,7 @@ module.exports = class taskcontroller {
     static async showAllData(req, res) {
         try {
             const userId = req.session.userid
-            const task = await Task.findAll({where:{UserId:userId},raw:true,include:user})
+            const task = await Task.findAll({ where: { UserId: userId, done: false }, raw: true })
             res.json(task)
         } catch (err) {
             console.log(err)
@@ -41,13 +41,12 @@ module.exports = class taskcontroller {
         const id = req.body.id
         const userid = req.session.userid
         try {
-            await Task.destroy({ where: { id: id,UserId:userid } })
+            await Task.destroy({ where: { id: id, UserId: userid } })
             res.redirect('/tasks')
         } catch (err) {
             console.log(err)
         }
     }
-
 
     static async atualizartarefa(req, res) {
         const id = req.params.id
@@ -70,37 +69,38 @@ module.exports = class taskcontroller {
             description: req.body.description
         }
         try {
-            await Task.update(taskdata, { where: { id: id, UserId:userid } })
+            await Task.update(taskdata, { where: { id: id, UserId: userid } })
             res.redirect('/tasks')
         } catch (error) {
             res.status(500).send("Erro ao atualizar")
         }
     }
-   static async tarefaconcluida(req, res) {
-    const id = req.body.id;
-    const userid = req.session.userid
-    const taskdata = { done: true };
 
-    try {
-        await Task.update(taskdata, { where: { id: id,UserId:userid } });
-        res.redirect('/tasks/concluidas-page'); 
-    } catch (error) {
-        console.log("Erro ao atualizar status:", error);
-        res.status(500).send("Erro ao concluir tarefa");
+    static async tarefaconcluida(req, res) {
+        const id = req.body.id;
+        const userid = req.session.userid
+        const taskdata = { done: true };
+        try {
+            await Task.update(taskdata, { where: { id: id, UserId: userid } });
+            res.redirect('/tasks/concluidas-page'); 
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Erro ao concluir tarefa");
+        }
     }
-}
-static async tarefaconlcuidaalldata(req, res) {
-    try {
-        //
-        const tarefas = await Task.findAll({ where: { done: true }, raw: true });
-      return res.json(tarefas || []);
 
-    } catch (error) {
-        console.log("Erro ao buscar tarefas:", error);
-        res.status(500).json({ error: "Erro interno" });
+    static async tarefaconlcuidaalldata(req, res) {
+        try {
+            const userId = req.session.userid
+            const tarefas = await Task.findAll({ where: { UserId: userId, done: true }, raw: true });
+            return res.json(tarefas || []);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: "Erro interno" });
+        }
     }
-}
-static async mostrarPaginaConcluidas(req, res) {
-    res.sendFile(path.join(__dirname, '../views/tarefasconcluidas.html'));
-}
+
+    static async mostrarPaginaConcluidas(req, res) {
+        res.sendFile(path.join(__dirname, '../views/tarefasconcluidas.html'));
+    }
 }

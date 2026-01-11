@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const session = require('express-session'); 
-const conn = require("./db/conn.js");
+const session = require('express-session');
+const conn = require('./db/conn.js');
+
 
 const task = require('./models/task.js');
 const user = require('./models/user.js');
@@ -36,28 +37,27 @@ app.use((req, res, next) => {
     next();
 });
 
-// Padronização de rotas para evitar 404
 app.use('/tasks', tasksRoutes); 
 app.use('/', userRoutes); 
 
 app.get('/', (req, res) => {
     if (req.session.userid) {
-        return res.redirect('/tasks'); 
+        return res.redirect('/tasks/add'); 
     }
-    res.redirect('/login'); // Redireciona para login se não houver sessão
+    res.redirect('/login');
 });
+
 
 user.hasMany(task);
 task.belongsTo(user);
 
-if (process.env.NODE_ENV !== 'production') {
-    conn.sync().then(() => {
+
+conn.sync({ alter: true }).then(() => {
+    if (process.env.NODE_ENV !== 'production') {
         app.listen(PORT, () => {
             console.log(`Servidor rodando localmente na porta ${PORT}`);
         });
-    }).catch((err) => console.log(err));
-} else {
-    conn.sync().catch((err) => console.log("Erro na sincronização:", err));
-}
+    }
+}).catch((err) => console.log("Erro na sincronização:", err));
 
 module.exports = app;

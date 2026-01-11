@@ -13,37 +13,35 @@ class UserController {
     }
 
     static async salvarlogin(req, res) {
-        const { name, email, password, telefone } = req.body;
+    const { name, email, password, telefone } = req.body;
 
-        try {
-            const usuarioExistente = await User.findOne({ where: { email: email } });
-            if (usuarioExistente) {
-                return res.status(400).send("Este e-mail já está cadastrado.");
-            }
-
-            const salt = bcrypt.genSaltSync(10);
-            const hash = bcrypt.hashSync(password, salt);
-
-            const userData = {
-                name,
-                email,
-                password: hash,
-                telefone
-            };
-
-            const criarusuario = await User.create(userData);
-            
-            req.session.userid = criarusuario.id;
-
-            req.session.save(() => {
-                res.redirect('/tasks/add');
-            });
-        } catch (error) {
-            console.error('Erro no cadastro:', error);
-            res.status(500).send("Erro ao criar conta.");
+    try {
+        const usuarioExistente = await User.findOne({ where: { email: email } });
+        if (usuarioExistente) {
+            return res.status(400).send("Este e-mail já está cadastrado.");
         }
-    }
 
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+
+        const userData = {
+            name,
+            email,
+            password: hash,
+            telefone
+        };
+
+        await User.create(userData);
+        
+        
+        
+        res.redirect('/login');
+
+    } catch (error) {
+        console.error('Erro no cadastro:', error);
+        res.status(500).send("Erro ao criar conta.");
+    }
+}
     static async verificarlogin(req, res) {
         const { email, password } = req.body;
 

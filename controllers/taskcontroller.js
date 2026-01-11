@@ -107,4 +107,5 @@ module.exports = class taskcontroller {
     }
 
     static async mostrarPaginaConcluidas(req, res) {
-        res.sendFile(path.join(__dirname, '../views/tarefasconcluidas.html'));
+        res.sendFile(path.join(__dirname, '../views/tarefasconcluidas.html'));}
+    }

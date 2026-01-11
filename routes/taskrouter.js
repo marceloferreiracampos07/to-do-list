@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const task_controller = require("../controllers/taskcontroller.js");
-const { checkAuth } = require('../helpers/auth.js'); // Importando o protetor
+const { checkAuth } = require('../helpers/auth.js'); 
 
 router.get('/add', checkAuth, task_controller.createtask); 
 

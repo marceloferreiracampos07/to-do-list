@@ -1,173 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina de cadastro </title>
+    <title>Página de Cadastro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        main {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        header h1 {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form div {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.9rem;
+            background: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            padding-right: 45px;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #5a6fd6;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        .signup-link a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
 </head>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-header h1 {
-    color:black;
-    font-size: 1.5rem; 
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-main {
-    background: #fff;
-    padding: 30px; 
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 350px;
-}
-
-
-form div {
-    margin-bottom: 12px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-size: 0.85rem; 
-    font-weight: 600;
-}
-
-input {
-    width: 100%;
-    padding: 10px 12px; 
-    border: 2px solid #eee;
-    border-radius: 8px;
-    outline: none;
-    font-size: 0.9rem;
-    background: #f9f9f9;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-.signup-link {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 0.8rem;
-}
-</style>
 <body>
-    
-
     <main>
-    <header> 
-        <h1>PAGINA DE CADASTRO</h1>
-    </header>
+        <header>
+            <h1>CADASTRO</h1>
+        </header>
+
         <form method="POST" action="/cadastro" id="formCadastro">
             <div>
-                
-            <label>Nome:</label>
-            <input type="text" name="name" placeholder="digite seu nome" id="name" required >
-
-            </div>
-            <div>
-                
-            <label>Email:</label>
-            <input type="email" name="email" placeholder="digite seu email "  required>
-
-            </div>
-
-
-            <div>
-
-            <label>Senha:</label>
-            <input type="password" name="password" placeholder="digite sua senha " id="senha" required>
-            <button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
-            👁️
-        </button>
-
+                <label>Nome:</label>
+                <input type="text" name="name" placeholder="digite seu nome" id="name" required>
             </div>
 
             <div>
-                
-            <label>Telefone:</label>
-            <input type="tel" name="telefone" placeholder="digite seu numero de telefone" required>
-
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="digite seu email" required>
             </div>
-            <main>
-    <form method="post" action="/register/save"> <button type="submit">Criar conta</button>
-        
-        <div class="signup-link">
-            Já tem uma conta? <a href="/login">Entre aqui</a>
-        </div>
-    </form>
-    <div id="mensagem"></div>
-</main>
-            
+
+            <div>
+                <label>Senha:</label>
+                <div class="password-wrapper">
+                    <input type="password" name="password" placeholder="digite sua senha" id="password" required>
+                    <button type="button" id="togglePassword" class="toggle-btn">👁️</button>
+                </div>
+            </div>
+
+            <div>
+                <label>Telefone:</label>
+                <input type="tel" name="telefone" placeholder="digite seu telefone" required>
+            </div>
+
+            <button type="submit">Criar conta</button>
+
+            <div class="signup-link">
+                Já tem uma conta? <a href="/login">Entre aqui</a>
+            </div>
         </form>
-     
     </main>
+
     <script>
         const form = document.querySelector('#formCadastro');
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordField = document.querySelector('#password');
 
-form.addEventListener('submit', function(event) {
-    const senha = document.querySelector('#password').value;
-    const nome = document.querySelector('#name').value;
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
 
-    if (nome.length < 3) {
-        event.preventDefault();
-        alert('Por favor, digite seu nome completo.');
-        return;
-    }
+        form.addEventListener('submit', function(event) {
+            const senhaValue = passwordField.value;
+            const nomeValue = document.querySelector('#name').value;
 
-    if (senha.length < 6) {
-        event.preventDefault();
-        alert('A senha deve ter pelo menos 6 caracteres.');
-        return;
-    }
+            if (nomeValue.trim().length < 3) {
+                event.preventDefault();
+                alert('Por favor, digite seu nome completo.');
+                return;
+            }
 
-    console.log('Enviando dados para o servidor...');
-});
-const togglePassword = document.querySelector('#togglePassword');
-    const password = document.querySelector('#password');
-
-    togglePassword.addEventListener('click', function () {
-    
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        
-    
-        this.textContent = type === 'password' ? '👁️' : '🙈';
-    });
-
+            if (senhaValue.length < 6) {
+                event.preventDefault();
+                alert('A senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+        });
     </script>
 </body>
 </html>

@@ -110,6 +110,9 @@ button {
 
             <label>Senha:</label>
             <input type="password" name="password" placeholder="digite sua senha " id="senha" required>
+            <button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
+            👁️
+        </button>
 
             </div>
 
@@ -153,6 +156,17 @@ form.addEventListener('submit', function(event) {
 
     console.log('Enviando dados para o servidor...');
 });
+const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function () {
+    
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+    
+        this.textContent = type === 'password' ? '👁️' : '🙈';
+    });
 
     </script>
 </body>

@@ -3,110 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina de  login</title>
+    <title>Página de Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+        }
+
+        main {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.9rem;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            padding-right: 45px;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #5a6fd6;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline; 
+        }
+    </style>
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-header h1 {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-}
-
-main {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 350px; /* Mantendo o tamanho reduzido solicitado */
-}
-
-form div {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 2px solid #eee;
-    border-radius: 8px;
-    outline: none;
-    font-size: 0.9rem;
-    background: #f9f9f9;
-    transition: all 0.3s ease;
-}
-
-input:focus {
-    border-color: #667eea;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background: #5a6fd6;
-}
-
-.signup-link {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 0.8rem;
-    color: #777;
-}
-
-.signup-link a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.signup-link a:hover {
-    text-decoration: underline; 
-}
-</style>
 <body>
     <header> 
         <h1>PAGINA DE LOGIN</h1>
@@ -116,12 +141,15 @@ button:hover {
         <form action="/login" method="POST" id="formlogin">
             <div>
                 <label>Email:</label>
-                <input type="email" name="email" placeholder="digite seu email " id="email" required>
+                <input type="email" name="email" placeholder="digite seu email" id="email" required>
             </div>
 
             <div>
                 <label>Senha:</label>
-                <input type="password" name="password" placeholder="digite Sua senha" id="password" required>
+                <div class="password-wrapper">
+                    <input type="password" name="password" placeholder="digite sua senha" id="password" required>
+                    <button type="button" id="togglePassword" class="toggle-btn">👁️</button>
+                </div>
             </div>
 
             <button type="submit">Entrar</button>
@@ -131,27 +159,34 @@ button:hover {
             </div>
         </form>
     </main>
+
     <script>
-        const form = document.querySelector('#formLogin');
+        const form = document.querySelector('#formlogin');
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordField = document.querySelector('#password');
 
-form.addEventListener('submit', function(event) {
-    const email = document.querySelector('#email').value;
-    const senha = document.querySelector('#password').value;
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
 
-    if (email.indexOf('@') === -1) {
-        event.preventDefault();
-        alert('Por favor, insira um e-mail válido.');
-        return;
-    }
+        form.addEventListener('submit', function(event) {
+            const email = document.querySelector('#email').value;
+            const senha = passwordField.value;
 
-    if (senha.length < 1) {
-        event.preventDefault();
-        alert('Por favor, insira sua senha.');
-        return;
-    }
+            if (email.indexOf('@') === -1) {
+                event.preventDefault();
+                alert('Por favor, insira um e-mail válido.');
+                return;
+            }
 
-    console.log('Autenticando...');
-});
+            if (senha.length < 1) {
+                event.preventDefault();
+                alert('Por favor, insira sua senha.');
+                return;
+            }
+        });
     </script>
 </body>
 </html>

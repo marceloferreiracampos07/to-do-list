@@ -13,20 +13,24 @@ class UserController {
     }
 
     static async salvarlogin(req, res) {
-        const { name, email, password,telefone } = req.body;
-
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(password, salt);
-
-        const userData = {
-            name,
-            email,
-            password: hash,
-            telefone
-
-        };
+        const { name, email, password, telefone } = req.body;
 
         try {
+            const usuarioExistente = await User.findOne({ where: { email: email } });
+            if (usuarioExistente) {
+                return res.status(400).send("Este e-mail já está cadastrado.");
+            }
+
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
+
+            const userData = {
+                name,
+                email,
+                password: hash,
+                telefone
+            };
+
             const criarusuario = await User.create(userData);
             
             req.session.userid = criarusuario.id;
@@ -35,7 +39,7 @@ class UserController {
                 res.redirect('/tasks/add');
             });
         } catch (error) {
-            console.log(error);
+            console.error('Erro no cadastro:', error);
             res.status(500).send("Erro ao criar conta.");
         }
     }
@@ -63,7 +67,7 @@ class UserController {
             });
 
         } catch (error) {
-            console.log(error);
+            console.error('Erro no login:', error);
             res.status(500).send('Erro interno no servidor.');
         }
     }

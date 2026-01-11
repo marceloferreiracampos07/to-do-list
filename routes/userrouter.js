@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/usercontroller.js');
-const { checkAuth } = require('./helpers/auth.js'); // Sem letras maiúsculas se a pasta for 'helpers'
+const { checkAuth } = require('..helpers/auth.js'); 
 
 router.get('/login', checkAuth ,UserController.showlogin);
 router.post('/login', checkAuth,UserController.verificarlogin);

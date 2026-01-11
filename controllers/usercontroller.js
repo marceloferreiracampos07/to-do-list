@@ -13,7 +13,7 @@ class UserController {
     }
 
     static async salvarlogin(req, res) {
-        const { name, email, password } = req.body;
+        const { name, email, password,telefone } = req.body;
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
@@ -21,7 +21,9 @@ class UserController {
         const userData = {
             name,
             email,
-            password: hash
+            password: hash,
+            telefone
+
         };
 
         try {
